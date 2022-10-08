@@ -5,6 +5,8 @@ import ShoppingCart from "./shoppingCart";
 import ProductDetails from "./productDetails";
 import NotFound from "./notFound";
 import Menu from "./menu";
+import Login from "./login";
+import Home from "./home";
 
 class App extends Component {
   state = {
@@ -61,7 +63,9 @@ class App extends Component {
     return (
       <React.Fragment>
         <NavBar
-          productsCount={this.state.products.filter((p) => p.count > 0).length}
+          productsInCart={
+            this.state.products.filter((p) => p.isInCart > 0).length
+          }
         />
         <main className="container">
           <Routes>
@@ -74,11 +78,15 @@ class App extends Component {
                 />
               }
             />
+            <Route path="/login" element={<Login />} />
             <Route
               path="/cart"
               element={
                 <ShoppingCart
                   products={this.state.products}
+                  productsInCart={this.state.products.filter(
+                    (product) => product.isInCart
+                  )}
                   onIncrement={this.IncrementHandler}
                   onDelete={this.handleDelete}
                   onReset={this.handleReset}
@@ -88,6 +96,7 @@ class App extends Component {
             />
             <Route path="/notFound" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/home" element={<Home />} />
             <Route
               path="/menu"
               element={
@@ -99,12 +108,6 @@ class App extends Component {
               }
             />
           </Routes>
-          {/* <ShoppingCart
-            products={this.state.products}
-            onIncrement={this.IncrementHandler}
-            onDelete={this.handleDelete}
-            onReset={this.handleReset}
-          /> */}
         </main>
       </React.Fragment>
     );

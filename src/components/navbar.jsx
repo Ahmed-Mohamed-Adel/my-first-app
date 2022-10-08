@@ -35,6 +35,11 @@ const NavBar = (props) => {
               Shopping Cart
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/login">
+              Login
+            </NavLink>
+          </li>
         </ul>
       </div>
       <span className="badge text-bg-primary m-2">
@@ -42,7 +47,7 @@ const NavBar = (props) => {
         <span style={{ color: "white" }}>
           <i className="fa-solid fa-cart-plus"></i>
         </span>
-        {props.productsCount}
+        {props.productsInCart}
       </span>
     </nav>
   );

@@ -16,14 +16,14 @@ class ShoppingCart extends Component {
   }
   render() {
     console.log("Shooping Cart ==> Render");
-    const { products, onReset, onDelete, onIncrement } = this.props;
+    const { productsInCart, onReset, onDelete, onIncrement } = this.props;
     return (
       <React.Fragment>
         <h1>Shopping Cart</h1>
         <button onClick={onReset} className="btn btn-secondary btn-sm m-2">
           Reset
         </button>
-        {products.map((product) => (
+        {productsInCart.map((product) => (
           <Product
             key={product.id}
             product={product}
